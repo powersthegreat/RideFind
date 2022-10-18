@@ -1,11 +1,14 @@
 import React from 'react';
 
 import classes from './RideList.module.css';
+import FilterSortBar from './FilterSortBar';
+import DriverList from './DriverList';
 
 function RideList() {
     return (
         <div className={classes.container}>
-            <p>ride list</p>
+            <FilterSortBar></FilterSortBar>
+            <DriverList></DriverList>
         </div>
     );
 }
