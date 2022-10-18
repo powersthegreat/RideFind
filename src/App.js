@@ -1,10 +1,17 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import MainPage from './pages/MainPage'
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   return (
-    <div>
-      RideFind...
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage></MainPage>} />
+        <Route path="*" element={<ErrorPage></ErrorPage>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
