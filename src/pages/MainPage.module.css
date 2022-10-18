@@ -1,8 +1,6 @@
-.testsection {
-    background-color: darkslategrey;
-    width: 100%;
-}
-
-.testh1 {
-    color: white;
+.grid {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-template-rows: calc(100vh - 5rem);
+    
 }
