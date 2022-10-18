@@ -1,12 +1,15 @@
 import React from "react";
 
 import classes from './MainPage.module.css';
+import Map from "../components/map/Map";
+import RideList from "../components/ride_list/RideList";
 
 function MainPage() {
     return (
-        <section className={classes.testsection}>
-            <h1 className={classes.testh1}>This is the main page.</h1>
-        </section>
+        <div className={classes.grid}>
+            <RideList></RideList>
+            <Map></Map>
+        </div>
     );
 }
 

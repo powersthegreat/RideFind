@@ -1,0 +1,13 @@
+.container {
+    background-color: white;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+    /* margin-bottom: 5px; */
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 10%;
+}
