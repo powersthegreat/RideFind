@@ -1,0 +1,36 @@
+.listitem {
+    background: white;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding: 10px 10px 10px 10px;
+    margin: 0px 1px .66px 1px;
+    border-radius: 6px;
+    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); */
+}
+
+.listitem:hover {
+    background: #f2f2f2;
+}
+
+.container1 {
+    /* background: goldenrod; */
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.container2 {
+    /* background: lightblue; */
+    color: #00305B;
+    font-size: 24px;
+    font-family: sans-serif "open sans";
+    font-weight: 500;
+    text-align: right;
+    padding-right: 8%;
+}
+
+.container3 {
+    /* background: coral; */
+    color: #0F4C85;
+    font-size: 14px;
+    font-family: sans-serif "open sans";
+}
