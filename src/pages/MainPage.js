@@ -2,12 +2,12 @@ import React from "react";
 
 import classes from './MainPage.module.css';
 import Map from "../components/map/Map";
-import RideList from "../components/ride_list/RideList";
+import SideBar from '../components/side_bar/SideBar';
 
 function MainPage() {
     return (
         <div className={classes.grid}>
-            <RideList></RideList>
+            <SideBar></SideBar>
             <Map></Map>
         </div>
     );
