@@ -1,56 +1,107 @@
 .accordionsection {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     position: relative;
-    height: 100vh;
-    background: #fff;
+    background: white;
 }
 
 .container {
+    border-radius: 6px;
     position: absolute;
     top: 30%;
-    box-shadow: 2px 10px 35px 1px rgba(153, 153, 153, 0.3);
+    width: 100%;
+
 }
 
 .wrap {
+    border-radius: 6px;
     background: white;
-    color: #fff;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-    cursor: pointer;
+    margin: 0px 1px 1px 1px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 .wrap:hover {
-    background: lightgrey;
+    background: #fafafa;
+}
+
+.logo {
+    position: relative;
+    top: 10%;
+    padding-left: 5px;
+}
+
+.arrow {
+    padding-top: 7%;
+}
+
+.eta {
+    position: relative;
+    bottom: 15%;
+    padding-top: 2px;
+    padding-left: 5px;
+    color: #0F4C85;
+    font-size: 14px;
+    font-family: sans-serif "open sans";
+}
+
+.cost {
+    position: relative;
+    left: 20%;
+    color: #00305B;
+    font-size: 24px;
+    font-family: sans-serif "open sans";
+
 }
 
 .dropdown {
+    display: inline;
     background: white;
-    color: #00ffb9;
+    padding-bottom: 10px;
+}
+
+.descriptiontitlediv {
+    margin-left: 2px;
+}
+
+.descriptiontitle {
+    color: #00305B;
+    font-size: 16px;
+    font-family: sans-serif "open sans";
+    margin: 5px 0px 5px 2px;
+}
+
+.divdescription {
     width: 100%;
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid #00ffb9;
-    border-top: 1px solid #00ffb9;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
-h1 {
-    padding: 2rem;
-    font-size: 2rem;
+.title {
+    color: #00305B;
+    font-size: 14px;
+    font-family: sans-serif "open sans";
+    line-height: 20px;
+    margin: 0px 0px 0px 10px;
 }
 
-span {
-    margin-right: 1.5rem;
+.ridedata {
+    color: #00305B;
+    font-size: 14px;
+    font-family: sans-serif "open sans";
+    line-height: 20px;
+    margin: 0px 0px 0px 70%;
+    text-align: left;
+    width: 50%;
 }
 
-p {
-    font-size: 2rem;
+.ridedatafinal {
+    color: #00305B;
+    font-size: 14px;
+    font-family: sans-serif "open sans";
+    line-height: 20px;
+    margin: 0px 0px 10px 70%;
+    text-align: left;
+    width: 50%;
 }

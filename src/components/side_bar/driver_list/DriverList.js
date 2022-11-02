@@ -9,7 +9,6 @@ function DriverList() {
         <div className={classes.container}>
             <ul className={classes.list}>
                 <Accordion></Accordion>
-                <DriverItem></DriverItem>
             </ul>
         </div>
     );

@@ -25,24 +25,46 @@ const Accordion = () => {
   };
 
   return (
-    <IconContext.Provider value={{ color: '#00305B', size: '25px'}}>
+    <IconContext.Provider value={{ color: '#00305B', size: '20px'}}>
       <AccordionSection className={classes.accordionsection}>
         <Container className={classes.container}>
           {Data.map((item, index) => {
             return (
               <>
                 <Wrap className={classes.wrap} onClick={() => toggle(index)} key={index}>
-                  <img src={item.company_logo} alt="logo" width="50" height="auto"></img>
-                  <p>{item.eta}</p>
-                  <h3>{item.cost}</h3>
-                  <span>{clicked === index ? <AiOutlineUp /> : <AiOutlineDown />}</span>
+                    <div>
+                        <img className={classes.logo} src={item.company_logo} alt="logo" width="70" height="auto"></img>
+                        <p className={classes.eta}>{item.eta}</p>
+                    </div>
+                    <h3 className={classes.cost}>{item.cost}</h3>
+                    <span className={classes.arrow}>{clicked === index ? <AiOutlineUp /> : <AiOutlineDown />}</span>
                 </Wrap>
                 {clicked === index ? (
-                  <Dropdown className={classes.dropdown}>
-                    <p>{item.vehicle}</p>
-                    <p>{item.ride_time}</p>
-                    <p>{item.rating}</p>
-                  </Dropdown>
+                    <Dropdown className={classes.dropdown}>
+                        <div className={classes.descriptiontitlediv}>
+                            <h3 className={classes.descriptiontitle}>Ride Details</h3>
+                        </div>
+                        <div className={classes.divdescription}>
+                            <p className={classes.title}>Company</p>
+                            <p className={classes.ridedata}>{item.company}</p>
+                        </div>
+                        <div className={classes.divdescription}>
+                            <p className={classes.title}>Time Estimate</p>
+                            <p className={classes.ridedata}>{item.ride_time}</p>
+                        </div>
+                        <div className={classes.divdescription}>
+                            <p className={classes.title}>Cost</p>
+                            <p className={classes.ridedata}>{item.cost}</p>
+                        </div>
+                        <div className={classes.divdescription}>
+                            <p className={classes.title}>Vehicle Type</p>
+                            <p className={classes.ridedata}>{item.vehicle}</p>
+                        </div>
+                        <div className={classes.divdescription}>
+                            <p className={classes.title}>Driver Rating</p>
+                            <p className={classes.ridedatafinal}>{item.rating}</p>
+                        </div>
+                    </Dropdown>
                 ) : null}
               </>
             );
