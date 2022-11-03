@@ -3,4 +3,6 @@
     border-radius: 6px;
     /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); */
     margin: 0px 5px 5px 5px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }

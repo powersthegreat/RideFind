@@ -64,6 +64,9 @@ const DriverItem = () => {
                             <p className={classes.title}>Driver Rating</p>
                             <p className={classes.ridedatafinal}>{item.rating}</p>
                         </div>
+                        <div className={classes.bookbuttondiv}>
+                            <button className={classes.bookbutton} type="action">Book</button>
+                        </div>
                     </Dropdown>
                 ) : null}
               </>
