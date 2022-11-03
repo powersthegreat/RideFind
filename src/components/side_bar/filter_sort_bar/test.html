@@ -1,4 +1,12 @@
-.container{
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
             background: white;
             /* border: 1px solid lightgrey; */
             border-radius: 6px;
@@ -6,6 +14,7 @@
             margin: 5px 5px 5px 5px;
             display: grid;
             grid-template-columns: 55% 45%;
+            width: 30%;
             white-space: nowrap;
         }
 
@@ -19,6 +28,16 @@
             /* border: 1px solid black; */
             position: relative;
 
+        }
+
+        .buttonsdiv {
+            /* background-color: white; */
+            text-align: right;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding-right: 8px;
+            padding-bottom: 8px;
         }
 
         .title {
@@ -40,15 +59,6 @@
             position: absolute;
             top: 40%;
             padding-left: 3px;
-        }
-
-        .buttonsdiv {
-            text-align: right;
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            padding-right: 8px;
-            padding-bottom: 8px;
         }
 
         .filterbutton {
@@ -79,3 +89,23 @@
             background-color: lightgray;
             border: 1px solid lightgray;
         }
+
+    </style>
+</head>
+<body>
+    <div class="main"></div>
+        <div class="container">
+            <div class="leftdiv">
+                <h3 class='title'>Rides in Area</h3>
+                <p class='location'>1111 Indiana St, Lawrence KS</p>
+            </div>
+            <div class='rightdiv'>
+                <div class="buttonsdiv">
+                    <button class='filterbutton' type="popup">Filter</button>
+                    <button class='sortbutton' type="select">Sort</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
