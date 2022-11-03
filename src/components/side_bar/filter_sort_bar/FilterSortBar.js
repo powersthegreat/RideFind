@@ -16,6 +16,7 @@ function FilterSortBar() {
                     <button className={classes.sortbutton} type="select">Sort</button>
                 </div>
             </div>
+            <p>filter and sort bar here</p>
         </div>
     );
 }
