@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Data } from './DriverData';
+import { rideData } from './DriverData';
 import styled from 'styled-components';
 import { IconContext } from 'react-icons';
 import { AiOutlineUp, AiOutlineDown } from 'react-icons/ai';
@@ -28,15 +28,15 @@ const DriverItem = () => {
     <IconContext.Provider value={{ color: '#00305B', size: '20px'}}>
       <AccordionSection className={classes.accordionsection}>
         <Container className={classes.container}>
-          {Data.map((item, index) => {
+          {rideData.map((item, index) => {
             return (
               <>
                 <Wrap className={classes.wrap} onClick={() => toggle(index)} key={index}>
                     <div>
                         <img className={classes.logo} src={item.company_logo} alt="logo" width="70" height="auto"></img>
-                        <p className={classes.eta}>{item.eta}</p>
+                        <p className={classes.eta}>{item.eta} minutes away</p>
                     </div>
-                    <h3 className={classes.cost}>{item.cost}</h3>
+                    <h3 className={classes.cost}>${item.cost.toFixed(2)}</h3>
                     <span className={classes.arrow}>{clicked === index ? <AiOutlineUp /> : <AiOutlineDown />}</span>
                 </Wrap>
                 {clicked === index ? (
