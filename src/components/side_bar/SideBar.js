@@ -1,17 +1,31 @@
 
 import React, { useState, useEffect} from 'react';
-import { rideData } from './DriverData';
 import DriverItem from './DriverItem';
 
-import classes from './SideBar.module.css';
-
-import React from 'react';
+import { rideData } from './DriverData';
 
 import classes from './SideBar.module.css';
-import FilterSortBar from './filter_sort_bar/FilterSortBar';
-import DriverList from './driver_list/DriverList';
 
 function SideBar() {
+    const [data, setData] = useState([]);
+    const [sortType, setSortType] = useState('cost');
+
+    useEffect(() => {
+        const sortArray = type => {
+          const types = {
+            cost: 'cost',
+            time: 'ride_time',
+            rating: 'ratin',
+            eta: 'eta',
+          };
+          const sortProperty = types[type];
+          const sorted = [...rideData].sort((a, b) => b[sortProperty] - a[sortProperty]);
+          setData(sorted);
+        };
+    
+        sortArray(sortType);
+      }, [sortType]);
+
     return (
         <div className={classes.container}>
             <div className={classes.filtersortbarmain}>
@@ -22,7 +36,7 @@ function SideBar() {
                 <div className={classes.rightdiv}>
                     <div className={classes.buttonsdiv}>
                         <button className={classes.filterbutton} type="popup">Filter</button>
-                        <select className={classes.sortbutton}>
+                        <select className={classes.sortbutton} onChange={(e) => setSortType(e.target.value)}>
                             <option value='cost'>Cost</option>
                             <option value='time'>Time</option>
                             <option value='rating'>Rating</option>
@@ -32,10 +46,8 @@ function SideBar() {
                 </div>
             </div>
             <div className={classes.driverlistmain}>
-                <DriverItem></DriverItem>
+                <DriverItem data={data}></DriverItem>
             </div>
-              <FilterSortBar></FilterSortBar>
-            <DriverList></DriverList>
         </div>
     );
 }
