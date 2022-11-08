@@ -10,7 +10,7 @@ export const rideData = [
         driver_name: 'Driver Name',
     },
     {
-        company_logo: 'https://clipground.com/images/logo-uber-png-2.png',
+        company_logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Lyft_logo.svg/1200px-Lyft_logo.svg.png',
         company: 'uber',
         eta: 6,
         ride_time: 19,
@@ -30,7 +30,7 @@ export const rideData = [
         driver_name: 'Driver Name',
     },
     {
-        company_logo: 'https://clipground.com/images/logo-uber-png-2.png',
+        company_logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Lyft_logo.svg/1200px-Lyft_logo.svg.png',
         company: 'uber',
         eta: 8,
         ride_time: 17,
@@ -50,7 +50,7 @@ export const rideData = [
         driver_name: 'Driver Name',
     },
     {
-        company_logo: 'https://clipground.com/images/logo-uber-png-2.png',
+        company_logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Lyft_logo.svg/1200px-Lyft_logo.svg.png',
         company: 'uber',
         eta: 10,
         ride_time: 15,
@@ -70,7 +70,7 @@ export const rideData = [
         driver_name: 'Driver Name',
     },
     {
-        company_logo: 'https://clipground.com/images/logo-uber-png-2.png',
+        company_logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Lyft_logo.svg/1200px-Lyft_logo.svg.png',
         company: 'uber',
         eta: 12,
         ride_time: 13,
@@ -90,7 +90,7 @@ export const rideData = [
         driver_name: 'Driver Name',
     },
     {
-        company_logo: 'https://clipground.com/images/logo-uber-png-2.png',
+        company_logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Lyft_logo.svg/1200px-Lyft_logo.svg.png',
         company: 'uber',
         eta: 14,
         ride_time: 11,
@@ -109,5 +109,4 @@ export const rideData = [
         rating: 5,
         driver_name: 'Driver Name',
     },
-
   ];
