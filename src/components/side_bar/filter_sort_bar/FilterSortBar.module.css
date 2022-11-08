@@ -1,21 +1,5 @@
 
-/* main container-------------------- */
-.container {
-    background-color: white;
-    margin-right: 5px;
-    margin-left: 5px;
-    margin-top: 5px;
-    /* margin-bottom: 5px; */
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 10%;
-}
-
-/* filtersortbar------------------------- */
-.filtersortbarmain {
+.container{
     background: white;
     /* border: 1px solid lightgrey; */
     border-radius: 6px;
@@ -97,12 +81,3 @@
     border: 1px solid lightgray;
 }
 
-/* driverlist------------------------------- */
-.driverlistmain {
-    background: white;
-    border-radius: 6px;
-    /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); */
-    margin: 0px 5px 5px 5px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}

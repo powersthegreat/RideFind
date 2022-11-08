@@ -1,8 +1,15 @@
+
 import React, { useState, useEffect} from 'react';
 import { rideData } from './DriverData';
 import DriverItem from './DriverItem';
 
 import classes from './SideBar.module.css';
+
+import React from 'react';
+
+import classes from './SideBar.module.css';
+import FilterSortBar from './filter_sort_bar/FilterSortBar';
+import DriverList from './driver_list/DriverList';
 
 function SideBar() {
     return (
@@ -27,6 +34,8 @@ function SideBar() {
             <div className={classes.driverlistmain}>
                 <DriverItem></DriverItem>
             </div>
+              <FilterSortBar></FilterSortBar>
+            <DriverList></DriverList>
         </div>
     );
 }
