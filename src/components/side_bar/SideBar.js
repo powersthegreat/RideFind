@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect} from 'react';
 import DriverItem from './DriverItem';
 
@@ -25,7 +26,6 @@ function SideBar() {
         sortArray(sortType);
       }, [sortType]);
 
-
     return (
         <div className={classes.container}>
             <div className={classes.filtersortbarmain}>
@@ -51,4 +51,5 @@ function SideBar() {
         </div>
     );
 }
+
 export default SideBar;
