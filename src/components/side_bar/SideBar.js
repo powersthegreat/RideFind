@@ -14,17 +14,17 @@ function SideBar() {
           const types = {
             cost: 'cost',
             time: 'ride_time',
-            rating: 'ratin',
+            rating: 'rating',
             eta: 'eta',
           };
           const sortProperty = types[type];
           const sorted = [...rideData].sort((a, b) => b[sortProperty] - a[sortProperty]);
           setData(sorted);
         };
-    
+
         sortArray(sortType);
       }, [sortType]);
-
+    
 
     return (
         <div className={classes.container}>
@@ -46,7 +46,7 @@ function SideBar() {
                 </div>
             </div>
             <div className={classes.driverlistmain}>
-                <DriverItem data={data}></DriverItem>
+                <DriverItem data={data} type={sortType}></DriverItem>
             </div>
         </div>
     );
