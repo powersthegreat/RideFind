@@ -10,7 +10,6 @@ export const rideData = [
         driver_name: 'Driver Name',
     },
     {
-
         company_logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Lyft_logo.svg/1200px-Lyft_logo.svg.png',
         company: 'uber',
         eta: 6,

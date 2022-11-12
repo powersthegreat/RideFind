@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+// import { rideData } from './DriverData';
 import styled from 'styled-components';
 import { IconContext } from 'react-icons';
-import { AiOutlineUp, AiOutlineDown } from 'react-icons/ai';
+import { AiOutlineUp, AiOutlineDown, AiTwotoneMoneyCollect } from 'react-icons/ai';
 
 import classes from './DriverItem.module.css'
 
@@ -29,6 +30,18 @@ const DriverItem = (props) => {
       <AccordionSection className={classes.accordionsection}>
         <Container className={classes.container}>
           {data.map((item, index) => {
+            
+            var main_var = `$${item.cost.toFixed(2)}`;
+            if (props.type == "time") {
+              main_var = `${item.ride_time} min`;
+            } else if (props.type == "rating") {
+              main_var = `${item.rating} stars`;
+            } else if (props.type == "eta") {
+              main_var = `${item.eta} min`;
+            }
+              
+            console.log(main_var);
+
             return (
               <>
                 <Wrap className={classes.wrap} onClick={() => toggle(index)} key={index}>
@@ -36,7 +49,7 @@ const DriverItem = (props) => {
                         <img className={classes.logo} src={item.company_logo} alt="logo" width="70" height="30"></img>
                         <p className={classes.eta}>{item.eta} minutes away</p>
                     </div>
-                    <h3 className={classes.cost}>${item.cost.toFixed(2)}</h3>
+                    <h3 className={classes.cost}>{main_var}</h3>
                     <span className={classes.arrow}>{clicked === index ? <AiOutlineUp /> : <AiOutlineDown />}</span>
                 </Wrap>
                 {clicked === index ? (
