@@ -22,11 +22,12 @@ import {
 import { useRef, useState } from 'react'
 
 const center = { lat: 48.8584, lng: 2.2945 }
-
+const mykey=process.env.REACT_APP_MY_SECRET_KEY;
+console.log(mykey);
 function MapLoader() {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey:"AIzaSyCYK8x8EyxKxEba0QftXmrSvC4TsDzlJg0",
-    libraries: ['places'],
+    googleMapsApiKey: mykey,
+  libraries: ['places'],
   })
 
   const [map, setMap] = useState(/** @type google.maps.Map */ (null))
@@ -97,13 +98,15 @@ function MapLoader() {
         </GoogleMap>
       </Box>
       <Box
-        p={4}
+        p={5}
         borderRadius='lg'
-        m={5}
+        m={2}
+        marginLeft={20}
         bgColor='white'
         shadow='base'
         minW='container.md'
         zIndex='1'
+        
       >
         <HStack spacing={3} justifyContent='space-between'>
           <Box flexGrow={2}>
