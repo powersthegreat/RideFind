@@ -76,6 +76,7 @@ function MapLoader() {
       alignItems='center'
       h='50vh'
       w='50vw'
+      
     >
       <Box position='absolute' left={0} top={0} h='183%' w='139%'>
         {/* Google Map Box */}
