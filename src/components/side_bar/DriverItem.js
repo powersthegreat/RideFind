@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import { rideData } from './DriverData';
 import styled from 'styled-components';
 import { IconContext } from 'react-icons';
-import { AiOutlineUp, AiOutlineDown, AiTwotoneMoneyCollect } from 'react-icons/ai';
+import { AiOutlineUp, AiOutlineDown } from 'react-icons/ai';
 
 import classes from './DriverItem.module.css'
 
@@ -32,11 +32,11 @@ const DriverItem = (props) => {
           {data.map((item, index) => {
             
             var main_var = `$${item.cost.toFixed(2)}`;
-            if (props.type == "time") {
+            if (props.type === "time") {
               main_var = `${item.ride_time} min`;
-            } else if (props.type == "rating") {
+            } else if (props.type === "rating") {
               main_var = `${item.rating} stars`;
-            } else if (props.type == "eta") {
+            } else if (props.type === "eta") {
               main_var = `${item.eta} min`;
             }
               
@@ -46,7 +46,7 @@ const DriverItem = (props) => {
               <>
                 <Wrap className={classes.wrap} onClick={() => toggle(index)} key={index}>
                     <div>
-                        <img className={classes.logo} src={item.company_logo} alt="logo" width="70" height="30"></img>
+                        <img className={classes.logo} src={item.company_logo} alt="logo" height="30" width="70"></img>
                         <p className={classes.eta}>{item.eta} minutes away</p>
                     </div>
                     <h3 className={classes.cost}>{main_var}</h3>
