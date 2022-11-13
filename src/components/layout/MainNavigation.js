@@ -36,6 +36,7 @@ function MainNavigation() {
                     </li>
                 </ul>
             </nav>
+            
         </header>
     );
 }
