@@ -21,7 +21,7 @@ import {
 } from '@react-google-maps/api'
 import { useRef, useState } from 'react'
 
-const center = { lat: 48.8584, lng: 2.2945 }
+const center = { lat: 38.957111, lng: -95.254387 }
 const mykey=process.env.REACT_APP_MY_SECRET_KEY;
 console.log(mykey);
 function MapLoader() {
@@ -76,18 +76,20 @@ function MapLoader() {
       alignItems='center'
       h='50vh'
       w='50vw'
+      
     >
       <Box position='absolute' left={0} top={0} h='183%' w='139%'>
         {/* Google Map Box */}
         <GoogleMap
           center={center}
           zoom={15}
-          mapContainerStyle={{ width: '100%', height: '100%' }}
+          mapContainerStyle={{ width: '100%', height: '100%', overflow: 'hidden', borderRadius: 10,}}
           options={{
             zoomControl: false,
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
+            
           }}
           onLoad={map => setMap(map)}
         >
@@ -101,11 +103,11 @@ function MapLoader() {
         p={5}
         borderRadius='lg'
         m={2}
-        marginLeft={20}
+        marginLeft={350}
         bgColor='white'
         shadow='base'
         minW='container.md'
-        zIndex='1'
+        zIndex='docked'
         
       >
         <HStack spacing={3} justifyContent='space-between'>
@@ -125,7 +127,7 @@ function MapLoader() {
           </Box>
 
           <ButtonGroup>
-            <Button colorScheme='blue' type='submit' onClick={calculateRoute}>
+            <Button colorScheme= 'facebook' type='submit' onClick={calculateRoute}>
               Calculate Route
             </Button>
             <IconButton

@@ -11,7 +11,7 @@ function MainPage() {
             <ChakraProvider>
                 <MapLoader className="mapContainer"/>
             </ChakraProvider>
-           
+            
            
             
         </div>
