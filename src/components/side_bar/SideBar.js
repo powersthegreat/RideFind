@@ -17,8 +17,13 @@ function SideBar() {
             rating: 'rating',
             eta: 'eta',
           };
+          let sorted = [];
           const sortProperty = types[type];
-          const sorted = [...rideData].sort((a, b) => b[sortProperty] - a[sortProperty]);
+          if (sortProperty === "rating") {
+            sorted = [...rideData].sort((a, b) => b[sortProperty] - a[sortProperty]);
+          } else {
+            sorted = [...rideData].sort((b, a) => b[sortProperty] - a[sortProperty]);
+          }
           setData(sorted);
         };
 
@@ -31,7 +36,7 @@ function SideBar() {
             <div className={classes.filtersortbarmain}>
                 <div className={classes.leftdiv}>
                     <h3 className={classes.title}>Rides in Area</h3>
-                    <p className={classes.location}>1111 Indiana St, Lawrence KS</p>
+                    <p className={classes.location}>Current Location Here</p>
                 </div>
                 <div className={classes.rightdiv}>
                     <div className={classes.buttonsdiv}>

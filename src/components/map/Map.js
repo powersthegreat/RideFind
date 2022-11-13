@@ -78,12 +78,12 @@ function MapLoader() {
       w='50vw'
       
     >
-      <Box position='absolute' left={0} top={0} h='183%' w='139%'>
+      <Box position='absolute' left={0} top={0} h='183%' w='139.5%'>
         {/* Google Map Box */}
         <GoogleMap
           center={center}
           zoom={15}
-          mapContainerStyle={{ width: '100%', height: '100%', overflow: 'hidden', borderRadius: 10,}}
+          mapContainerStyle={{ width: '100%', height: '98.5%', overflow: 'hidden', borderRadius: 10, margin: "5px 0px 0px 0px",}}
           options={{
             zoomControl: false,
             streetViewControl: false,
@@ -104,6 +104,7 @@ function MapLoader() {
         borderRadius='lg'
         m={2}
         marginLeft={350}
+        marginTop={4}
         bgColor='white'
         shadow='base'
         minW='container.md'
