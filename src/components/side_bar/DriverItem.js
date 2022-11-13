@@ -39,17 +39,15 @@ const DriverItem = (props) => {
             } else if (props.type === "eta") {
               main_var = `${item.eta} min`;
             }
-              
-            console.log(main_var);
 
             return (
               <>
                 <Wrap className={classes.wrap} onClick={() => toggle(index)} key={index}>
                     <div>
-                        <img className={classes.logo} src={item.company_logo} alt="logo" height="30" width="70"></img>
+                        <img className={classes.logo} src={item.company_logo} alt="logo"></img>
                         <p className={classes.eta}>{item.eta} minutes away</p>
                     </div>
-                    <h3 className={classes.cost}>{main_var}</h3>
+                    <h3 className={classes.mainvar}>{main_var}</h3>
                     <span className={classes.arrow}>{clicked === index ? <AiOutlineUp /> : <AiOutlineDown />}</span>
                 </Wrap>
                 {clicked === index ? (
@@ -59,15 +57,15 @@ const DriverItem = (props) => {
                         </div>
                         <div className={classes.divdescription}>
                             <p className={classes.title}>Company</p>
-                            <p className={classes.ridedata}>{item.company}</p>
+                            <p className={classes.ridedata}>{item.company[0].toUpperCase() + item.company.slice(1)}</p>
                         </div>
                         <div className={classes.divdescription}>
                             <p className={classes.title}>Time Estimate</p>
-                            <p className={classes.ridedata}>{item.ride_time}</p>
+                            <p className={classes.ridedata}>{item.ride_time} min</p>
                         </div>
                         <div className={classes.divdescription}>
                             <p className={classes.title}>Cost</p>
-                            <p className={classes.ridedata}>{item.cost}</p>
+                            <p className={classes.ridedata}>${item.cost}</p>
                         </div>
                         <div className={classes.divdescription}>
                             <p className={classes.title}>Vehicle Type</p>
@@ -75,7 +73,7 @@ const DriverItem = (props) => {
                         </div>
                         <div className={classes.divdescription}>
                             <p className={classes.title}>Driver Rating</p>
-                            <p className={classes.ridedatafinal}>{item.rating}</p>
+                            <p className={classes.ridedatafinal}>{item.rating} stars</p>
                         </div>
                         <div className={classes.bookbuttondiv}>
                             <button className={classes.bookbutton} type="action">Book</button>
