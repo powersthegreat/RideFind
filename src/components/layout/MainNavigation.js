@@ -13,7 +13,7 @@ function MainNavigation() {
         <header className={classes.header}>
             <div className='mainLogo'>
                 <Link to="/">
-                    <img style={{ width: 300, height: "4rem", position:'relative'}} src={MainLogo} alt="mainLogo"/>
+                    <img style={{ width: 200, height: "4rem", position:'relative'}} src={MainLogo} alt="mainLogo"/>
                 </Link>
                 
             </div>
@@ -21,17 +21,17 @@ function MainNavigation() {
                 <ul>
                     <li>
                         <Link to="/">
-                            <img style={{ width: 120, height: 48,position:'relative' }} src={HomeLogo} alt="homeLogo"/>
+                            <img style={{ width: 100, height: "2.5rem", position:'relative' }} src={HomeLogo} alt="homeLogo"/>
                         </Link>
                     </li>
                     <li>
                         <Link to="/tutorial">
-                            <img style={{ width: 120, height: 48,position:'relative' }} src={TutorialLogo} alt="homeLogo"/>
+                            <img style={{ width: 100, height: "2.5rem", position:'relative' }} src={TutorialLogo} alt="homeLogo"/>
                         </Link>
                     </li>
                     <li>
                         <Link to="/resources">
-                            <img style={{ width: 120, height: 48,position:'relative'}} src={ResourceLogo} alt="homeLogo"/>
+                            <img style={{ width: 100, height: "2.5rem", position:'relative'}} src={ResourceLogo} alt="homeLogo"/>
                         </Link>
                     </li>
                 </ul>
