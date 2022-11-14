@@ -13,10 +13,10 @@ function App() {
       <Layout>
         <Routes>
           
-            <Route path="/" element={<MainPage></MainPage>} />
-            <Route path="/tutorial" element={<TutorialPage></TutorialPage>} />
-            <Route path="/resources" element={<ResourcesPage></ResourcesPage>} />
-            <Route path="*" element={<ErrorPage></ErrorPage>} />
+            <Route path="/" element={<MainPage/>} />
+            <Route path="/tutorial" element={<TutorialPage/>} />
+            <Route path="/resources" element={<ResourcesPage/>} />
+            <Route path="*" element={<ErrorPage/>} />
          
         </Routes>
       </Layout>
