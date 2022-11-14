@@ -30,6 +30,8 @@
     position: relative;
     top: 10%;
     padding-left: 5px;
+    height: 20px;
+    width: 50px;
 }
 
 .arrow {
@@ -39,19 +41,20 @@
 .eta {
     position: relative;
     bottom: 15%;
-    padding-top: 2px;
+    padding-top: 10px;
     padding-left: 5px;
     color: #0F4C85;
     font-size: 14px;
     font-family: sans-serif "open sans";
 }
 
-.cost {
+.mainvar {
     position: relative;
     left: 20%;
     color: #00305B;
     font-size: 24px;
     font-family: sans-serif "open sans";
+    margin-top: 1.5%;
 
 }
 
@@ -101,7 +104,7 @@
 
 .bookbutton:hover {
     background-color: #707070;
-    border: 2px solid #707070;
+    border: 0px solid #707070;
 }
 
 .title {

@@ -13,7 +13,7 @@ function MainNavigation() {
         <header className={classes.header}>
             <div className='mainLogo'>
                 <Link to="/">
-                    <img style={{ width: 300, height: 80, position:'relative'}} src={MainLogo} alt="mainLogo"/>
+                    <img style={{ width: 300, height: "4rem", position:'relative'}} src={MainLogo} alt="mainLogo"/>
                 </Link>
                 
             </div>
