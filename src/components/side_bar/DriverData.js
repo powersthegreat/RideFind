@@ -40,8 +40,8 @@ export const rideData = [
         driver_name: 'Driver Name',
     },
     {
-        company_logo: 'https://clipground.com/images/logo-uber-png-2.png',
-        company: 'uber',
+        company_logo: 'https://i.pinimg.com/originals/dd/2b/a6/dd2ba66378969aac01dabf36e81c46fd.png',
+        company: 'curb',
         eta: 9,
         ride_time: 16,
         cost: 19.98,

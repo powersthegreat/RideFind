@@ -25,6 +25,11 @@ const DriverItem = (props) => {
     setClicked(index);
   };
 
+  function bookClicked() {
+    alert("Booking not avaliable in simulated mode.");
+  };
+
+
   return (
     <IconContext.Provider value={{ color: '#00305B', size: '20px'}}>
       <AccordionSection className={classes.accordionsection}>
@@ -76,7 +81,7 @@ const DriverItem = (props) => {
                             <p className={classes.ridedatafinal}>{item.rating} stars</p>
                         </div>
                         <div className={classes.bookbuttondiv}>
-                            <button className={classes.bookbutton} type="action">Book</button>
+                            <button className={classes.bookbutton} type="submit" onClick={bookClicked}>Book</button>
                         </div>
                     </Dropdown>
                 ) : null}
