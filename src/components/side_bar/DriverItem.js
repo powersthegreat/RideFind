@@ -49,7 +49,8 @@ const DriverItem = (props) => {
               <>
                 <Wrap className={classes.wrap} onClick={() => toggle(index)} key={index}>
                     <div>
-                        <img className={classes.logo} src={item.company_logo} alt="logo"></img>
+                        <p><a><img className={classes.logo} display="inline-block" src={item.company_logo} alt="logo"></img></a>
+						<a><img className={classes.caricon} display="inline-block" src={item.car_icon} alt="icon"></img></a></p>
                         <p className={classes.eta}>{item.eta} minutes away</p>
                     </div>
                     <h3 className={classes.mainvar}>{main_var}</h3>
