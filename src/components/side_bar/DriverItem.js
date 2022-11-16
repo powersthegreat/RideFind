@@ -46,8 +46,8 @@ const DriverItem = (props) => {
             }
 
             return (
-              <>
-                <Wrap className={classes.wrap} onClick={() => toggle(index)} key={index}>
+              <div key={index}>
+                <Wrap className={classes.wrap} onClick={() => toggle(index)} >
                     <div>
                         <img className={classes.logo} src={item.company_logo} alt="logo"></img>
                         <p className={classes.eta}>{item.eta} minutes away</p>
@@ -85,7 +85,7 @@ const DriverItem = (props) => {
                         </div>
                     </Dropdown>
                 ) : null}
-              </>
+              </div>
             );
           })}
         </Container>

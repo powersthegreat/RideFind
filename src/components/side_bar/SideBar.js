@@ -55,7 +55,7 @@ function SideBar() {
                 </div>
                 <div className={classes.rightdiv}>
                     <div className={classes.buttonsdiv}>
-                        <input className={classes.filterbutton} type="text" placeholder='Filter' ref={inputEl} onChange={getSearchTerm}></input>
+                        <input className={classes.filterbutton} type="text" placeholder='Search' ref={inputEl} onChange={getSearchTerm}></input>
                         <select className={classes.sortbutton} onChange={(e) => setSortType(e.target.value)}>
                             <option value='cost'>Cost</option>
                             <option value='time'>Time</option>
