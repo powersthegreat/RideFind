@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import DriverItem from './DriverItem';
 
 import { rideData } from './DriverData';
@@ -8,6 +8,22 @@ import classes from './SideBar.module.css';
 function SideBar() {
     const [data, setData] = useState([]);
     const [sortType, setSortType] = useState('cost');
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const inputEl = useRef("");
+
+    const getSearchTerm = () => {
+      let searchTerm = inputEl.current.value;
+      setSearchTerm(searchTerm);
+      if (searchTerm !== "") {
+        const filtered = rideData.filter((item) => {
+          return (Object.values(item)[1] + " " + Object.values(item)[5] + " " + Object.values(item)[6]).toLowerCase().includes(searchTerm.toLowerCase());
+        });
+        setSearchResults(filtered);
+      } else {
+        setSearchResults(data);
+      }
+    };
 
     useEffect(() => {
         const sortArray = type => {
@@ -29,7 +45,6 @@ function SideBar() {
 
         sortArray(sortType);
       }, [sortType]);
-    
 
     return (
         <div className={classes.container}>
@@ -40,7 +55,7 @@ function SideBar() {
                 </div>
                 <div className={classes.rightdiv}>
                     <div className={classes.buttonsdiv}>
-                        <button className={classes.filterbutton} type="popup">Filter</button>
+                        <input className={classes.filterbutton} type="text" placeholder='Filter' ref={inputEl} onChange={getSearchTerm}></input>
                         <select className={classes.sortbutton} onChange={(e) => setSortType(e.target.value)}>
                             <option value='cost'>Cost</option>
                             <option value='time'>Time</option>
@@ -51,7 +66,7 @@ function SideBar() {
                 </div>
             </div>
             <div className={classes.driverlistmain}>
-                <DriverItem data={data} type={sortType}></DriverItem>
+                <DriverItem data={searchTerm.length < 1 ? data : searchResults} type={sortType}></DriverItem>
             </div>
         </div>
     );

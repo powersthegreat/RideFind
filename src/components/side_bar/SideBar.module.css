@@ -66,7 +66,7 @@
     right: 0;
     padding-right: 8px;
     padding-bottom: 8px;
-}
+}   
 
 .filterbutton {
     border-radius: 3px;
@@ -81,6 +81,50 @@
 .filterbutton:hover {
     background-color: lightgray;
     border: 1px solid lightgray;
+}
+
+.popupdiv { 
+    background: #f2f2f2;
+    /* border: 1px solid lightgrey; */
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    float: bottom;
+    z-index: 3;
+    right: 44%;
+    width: 100px;
+}
+
+.filterselection {
+    text-align: left;
+}
+
+.filterselect {
+    color: #00305B;
+    font-size: 16px;
+    font-family: sans-serif "open sans";
+}
+
+.applybutton {
+    position: relative;
+    width: 50px;
+    right: 25px;
+    /* border: 2px solid white; */
+    /* color: #00305B; */
+    color: white;
+    font-size: 16px;
+    font-family: sans-serif "open sans";
+    /* background-color: #fafafa; */
+    background-color: black;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.applybutton:hover {
+    background-color: #707070;
+    border: 0px solid #707070;
 }
 
 .sortbutton {
