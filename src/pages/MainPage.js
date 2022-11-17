@@ -7,8 +7,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 function MainPage() {
     return (
         <div className={classes.grid}>
-            <SideBar/>
             <ChakraProvider>
+                <SideBar/>
                 <MapLoader className="mapContainer"/>
             </ChakraProvider>
             
