@@ -1,3 +1,4 @@
+import { layout } from '@chakra-ui/react';
 import React, { useState, useEffect, useRef } from 'react';
 import DriverItem from './DriverItem';
 
@@ -49,6 +50,11 @@ function SideBar() {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const inputEl = useRef("");
+   
+
+    getRideData().then(function(result){
+			rideData = result;
+		});
 
     const getSearchTerm = () => {
       let searchTerm = inputEl.current.value;
@@ -64,10 +70,6 @@ function SideBar() {
     };
 
     useEffect(() => {
-		getRideData().then(function(result){
-			rideData = result;
-			
-		});
         const sortArray = type => {
           const types = {
             cost: 'cost',
@@ -93,7 +95,7 @@ function SideBar() {
             <div className={classes.filtersortbarmain}>
                 <div className={classes.leftdiv}>
                     <h3 className={classes.title}>Rides in Area</h3>
-                    <p className={classes.location}>Current Location Here</p>
+                    <p className={classes.location}>Current location:</p>
                 </div>
                 <div className={classes.rightdiv}>
                     <div className={classes.buttonsdiv}>
