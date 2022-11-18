@@ -3,13 +3,12 @@ import {
   Spacer,
   Image,
   Text,
-  Button,
   useMediaQuery,
 } from '@chakra-ui/react';
 import React from 'react';
-import teamImage from '../assets/teamImage.jpg';
+import seeRides from '../assets/seeRides.png';
 
-const Services = () => {
+const SeeAvailableRides = () => {
   const [isLargerThanLG] = useMediaQuery('(min-width: 62em)');
 
   return (
@@ -19,7 +18,7 @@ const Services = () => {
       alignItems="center"
       px={isLargerThanLG ? '16' : '6'}
       py="16"
-      justifyContent="center"
+      justifyContent="space-between"
       flexDirection={isLargerThanLG ? 'row' : 'column'}
     >
       <Flex
@@ -28,7 +27,7 @@ const Services = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Image src={teamImage} alt="Chakra Team" w="full" />
+        <Image src={seeRides} alt="Chakra Team" w="full" />
       </Flex>
       <Spacer />
       <Flex
@@ -37,22 +36,17 @@ const Services = () => {
         ml={isLargerThanLG ? '7' : '0'}
       >
         <Text fontSize={isLargerThanLG ? '5xl' : '4xl'} fontWeight="bold">
-          We build, We revive
+          See Available Rides
         </Text>
 
-        <Text mb="6" opacity="0.8">
-          Your business needs to be in safe hands at all times. We ensure you
-          never run out of customers and not run at loss. We are trusted by over
-          500+ companies to deliver quality marketing campaigns using Digital
-          marketing & Offline marketing channels.
+        <Text mb="6" fontSize={isLargerThanLG ? 'lg' : 'base'} opacity={0.7}>
+          RideFind will display up to 50 available rides<br></br>
+          By default, rides are sorted by cost<br></br>
+          Click the arrow on the right of each card to see more details
         </Text>
-
-        <Button width="200px" size="lg" colorScheme="blue">
-          CONTACT US
-        </Button>
       </Flex>
     </Flex>
   );
 };
 
-export default Services;
+export default SeeAvailableRides;

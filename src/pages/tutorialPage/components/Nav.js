@@ -7,7 +7,6 @@ import {
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 const Nav = ({ onOpen, ref }) => {
   const [scroll, setScroll] = useState(false);
@@ -37,14 +36,7 @@ const Nav = ({ onOpen, ref }) => {
         Tutorial Page
       </Text>
 
-      <Spacer />
       
-      <Flex alignItems="center">
-        <IconButton mr="10" w={6} h={6} p={5} onClick={toggleColorMode}>
-          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-        </IconButton>
-
-      </Flex>
     </Flex>
   );
 };

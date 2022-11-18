@@ -1,4 +1,4 @@
-import { Flex, Text, Link } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import React from 'react';
 
 const Footer = () => {
@@ -13,10 +13,9 @@ const Footer = () => {
       justifyContent="center"
     >
       <Text mb="3">
-        Provided by{' '}
-        <Link href="https://RideFind.com" isExternal color="blue.500">
-          RideFind
-        </Link>
+        <a href="./">
+          Return to Main Page
+        </a>
       </Text>
       <Text opacity="0.5"></Text>
     </Flex>

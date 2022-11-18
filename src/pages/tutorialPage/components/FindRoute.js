@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Flex,
   Img,
   Spacer,
@@ -8,9 +7,9 @@ import {
   useMediaQuery,
 } from '@chakra-ui/react';
 import React from 'react';
-import chakraHero from '../assets/chakraHero.jpg';
+import findRoute from '../assets/findRoute.png'
 
-const Hero = () => {
+const FindRoute = () => {
   const [isLargerThanLG] = useMediaQuery('(min-width: 62em)');
   return (
     <Flex
@@ -29,28 +28,14 @@ const Hero = () => {
           mb="4"
         >
           {' '}
-          Tutorial Page
+          Finding A Route
         </Text>
 
         <Text mb="6" fontSize={isLargerThanLG ? 'lg' : 'base'} opacity={0.7}>
-          Sample Code for the blog article React MUI Components - Learn by Coding. The article explains how to code from scratch all components: 
-          navBar, hero section, app features, contact, and footer. 
+          Turn on location services for RideFind to use your current location.<br></br>
+          Then, simply type your location in 'Destination' and click Calculate Route
         </Text>
-
-        <Button
-          w="200px"
-          colorScheme="blue"
-          variant="solid"
-          h="50px"
-          size={isLargerThanLG ? 'lg' : 'md'}
-          mb={isLargerThanLG ? '0' : '10'}
-          onClick={(e) => {
-            e.preventDefault();
-            window.location.href='https://blog.appseed.us/chakra-ui-react-coding-landing-page/';
-            }}
-        >
-          Read More
-        </Button>
+        
       </Box>
       <Spacer />
       <Flex
@@ -58,10 +43,10 @@ const Hero = () => {
         alignItems="center"
         justifyContent="center"
       >
-        <Img src={chakraHero} alt="Chakra UI" />
+        <Img src={findRoute} />
       </Flex>
     </Flex>
   );
 };
 
-export default Hero;
+export default FindRoute;
