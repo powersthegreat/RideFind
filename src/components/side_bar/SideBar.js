@@ -1,3 +1,4 @@
+import { layout } from '@chakra-ui/react';
 import React, { useState, useEffect, useRef } from 'react';
 import DriverItem from './DriverItem';
 
@@ -39,9 +40,6 @@ async function getRideData(){
 		returnArr.push(temp);
 	}
 	
-	
-	
-	
 	return(returnArr);
 }
 
@@ -52,6 +50,11 @@ function SideBar() {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const inputEl = useRef("");
+   
+
+    getRideData().then(function(result){
+			rideData = result;
+		});
 
     const getSearchTerm = () => {
       let searchTerm = inputEl.current.value;
@@ -67,10 +70,6 @@ function SideBar() {
     };
 
     useEffect(() => {
-		getRideData().then(function(result){
-			rideData = result;
-			
-		});
         const sortArray = type => {
           const types = {
             cost: 'cost',
@@ -96,11 +95,11 @@ function SideBar() {
             <div className={classes.filtersortbarmain}>
                 <div className={classes.leftdiv}>
                     <h3 className={classes.title}>Rides in Area</h3>
-                    <p className={classes.location}>Current Location Here</p>
+                    <p className={classes.location}>Current location:</p>
                 </div>
                 <div className={classes.rightdiv}>
                     <div className={classes.buttonsdiv}>
-                        <input className={classes.filterbutton} type="text" placeholder='Filter' ref={inputEl} onChange={getSearchTerm}></input>
+                        <input className={classes.filterbutton} type="text" placeholder='Search' ref={inputEl} onChange={getSearchTerm}></input>
                         <select className={classes.sortbutton} onChange={(e) => setSortType(e.target.value)}>
                             <option value='cost'>Cost</option>
                             <option value='time'>Time</option>
