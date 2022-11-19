@@ -290,7 +290,7 @@ const server = http.createServer((request,response)=>{
 			// console.log(typeof formData);
 
 			postedRideData = JSON.parse(formData);
-			console.log("post stored");
+			// console.log("post stored");
 	
 			// fs.writeFile("data.txt", formData, (err) => {
 			// 	if (err) throw err;

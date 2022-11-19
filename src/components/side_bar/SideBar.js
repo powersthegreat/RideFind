@@ -19,10 +19,10 @@ function SideBar() {
     async function renderRideData(){
       let response = await fetch('http://localhost:1337/getdriverdata');
       let result = await response.json();
-      console.log("result loaded");
+      // console.log("result loaded");
       // console.log(result);
       setRideData(result);
-      console.log("result set");
+      // console.log("result set");
     }
 
     useEffect(() => {

@@ -42,7 +42,7 @@ function MapLoader() {
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef()
   /** @type React.MutableRefObject<HTMLInputElement> */
-  const destiantionRef = useRef()
+  const destinationRef = useRef()
 
   if (!isLoaded) {
     return <SkeletonText />
@@ -51,12 +51,12 @@ function MapLoader() {
   // API SIMULATION FUNCTION HERE
   async function getRideData(){
     // let start_coordinates = [originRef.current.value];
-    // let end_coordinates = [destiantionRef.current.value];
+    // let end_coordinates = [destinationRef.current.value];
     let response = await fetch('http://localhost:1337/uber/v1.2/estimates/price?start_latitude=38.95008406477576&start_longitude=-95.23592305902609&end_latitude=38.956976561477894&end_longitude=-95.27903033200737');
     let result = await response.json();
     let returnArr = [];
     for(var i=0; i<result.length; i++){
-      returnArr[i] = new Object();
+      returnArr[i] = {};
       returnArr[i].company_logo = 'https://clipground.com/images/logo-uber-png-2.png';
       returnArr[i].car_icon = result[i].image;
       returnArr[i].company = 'uber';
@@ -71,16 +71,16 @@ function MapLoader() {
     
     let response2 = await fetch('http://localhost:1337/lyft/rides?start_latitude=38.95008406477576&start_longitude=-95.23592305902609&end_latitude=38.956976561477894&end_longitude=-95.27903033200737');
     let result2 = await response2.json();
-    for(var i=0; i<result2.length; i++){
-      let temp = new Object();
+    for(var j=0; j<result2.length; j++){
+      let temp = {};
       temp.company_logo = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Lyft_logo.svg/1200px-Lyft_logo.svg.png';
-      temp.car_icon = result2[i].image;
+      temp.car_icon = result2[j].image;
       temp.company = 'lyft';
-      temp.eta = result2[i].eta;
-      temp.ride_time = Math.floor(result2[i].ride_time / 60);
-      temp.cost = parseFloat(result2[i].cost);
-      temp.vehicle = result2[i].vehicle;
-      temp.rating = result2[i].rating;
+      temp.eta = result2[j].eta;
+      temp.ride_time = Math.floor(result2[j].ride_time / 60);
+      temp.cost = parseFloat(result2[j].cost);
+      temp.vehicle = result2[j].vehicle;
+      temp.rating = result2[j].rating;
       temp.driver_name = "Lyft Driver";
       returnArr.push(temp);
     }
@@ -90,15 +90,20 @@ function MapLoader() {
 
 
   async function calculateRoute() {
-    if (originRef.current.value === '' || destiantionRef.current.value === '') {
+    if (originRef.current.value === '' || destinationRef.current.value === '') {
       return
     }
+
+    const test = "1111+Indiana+Street,+Lawrence,+KS,+USA";
+    let originFetch = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${test}&key=${mykey}`)
+    let originCoor = await originFetch.json()[0];
+    console.log(originCoor);
 
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService()
     const results = await directionsService.route({
       origin: originRef.current.value,
-      destination: destiantionRef.current.value,
+      destination: destinationRef.current.value,
       // eslint-disable-next-line no-undef
       travelMode: google.maps.TravelMode.DRIVING,
     })
@@ -133,7 +138,7 @@ function MapLoader() {
     setDistance('')
     setDuration('')
     originRef.current.value = ''
-    destiantionRef.current.value = ''
+    destinationRef.current.value = ''
   }
 
   return (
@@ -189,7 +194,7 @@ function MapLoader() {
               <Input
                 type='text'
                 placeholder='Destination'
-                ref={destiantionRef}
+                ref={destinationRef}
               />
             </Autocomplete>
           </Box>
