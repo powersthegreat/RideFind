@@ -1,14 +1,15 @@
-import { layout } from '@chakra-ui/react';
-import React, { useState, useEffect, useRef } from 'react';
+
+import React, { useState, useEffect, useRef, useContext } from 'react';
+import { RideDataContext } from '../../contexts/RideDataContext';
 import DriverItem from './DriverItem';
 
 // import { rideData } from './DriverData';
 
 import classes from './SideBar.module.css';
 
-let rideData = [];
-
 function SideBar() {
+    const { directionsResponse } = useContext(RideDataContext);
+    const [rideData, setRideData] = useState([]);
     const [data, setData] = useState([]);
     const [sortType, setSortType] = useState('cost');
     const [searchTerm, setSearchTerm] = useState("");
@@ -19,11 +20,16 @@ function SideBar() {
       let response = await fetch('http://localhost:1337/getdriverdata');
       let result = await response.json();
       console.log("result loaded");
-      setData(result);
+      // console.log(result);
+      setRideData(result);
+      console.log("result set");
     }
 
-    renderRideData();
-
+    useEffect(() => {
+      if (directionsResponse !== null){
+        renderRideData();
+      }
+    }, [directionsResponse])
 
     const getSearchTerm = () => {
       let searchTerm = inputEl.current.value;
@@ -57,7 +63,7 @@ function SideBar() {
         };
 
         sortArray(sortType);
-      }, [sortType]);
+      }, [sortType, rideData]);
 
     return (
         <div className={classes.container}>

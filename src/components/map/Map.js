@@ -19,12 +19,14 @@ import {
   Autocomplete,
   DirectionsRenderer,
 } from '@react-google-maps/api'
-import { useRef, useState } from 'react'
+
+import { useRef, useState, useContext } from 'react';
+import { RideDataContext } from '../../contexts/RideDataContext';
 
 const center = { lat: 38.957111, lng: -95.254387 }
 // const mykey=process.env.REACT_APP_MY_SECRET_KEY;
 const mykey = 'AIzaSyCYK8x8EyxKxEba0QftXmrSvC4TsDzlJg0';
-console.log(mykey);
+// console.log(mykey);
 function MapLoader() {
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: mykey,
@@ -32,7 +34,8 @@ function MapLoader() {
   })
 
   const [map, setMap] = useState(/** @type google.maps.Map */ (null))
-  const [directionsResponse, setDirectionsResponse] = useState(null)
+  // const [directionsResponse, setDirectionsResponse] = useState(null)
+  const {directionsResponse, setDirectionsResponse} = useContext(RideDataContext);
   const [distance, setDistance] = useState('')
   const [duration, setDuration] = useState('')
 
@@ -192,7 +195,7 @@ function MapLoader() {
           </Box>
 
           <ButtonGroup>
-            <Button colorScheme={'messenger'}  type='submit' onClick={calculateRoute}>
+            <Button id="calcroute" colorScheme={'messenger'}  type='submit' onClick={calculateRoute}>
               Calculate Route
             </Button>
             <IconButton

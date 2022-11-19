@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 import classes from './MainPage.module.css';
 import MapLoader from "../components/map/Map";
 import SideBar from '../components/side_bar/SideBar';
 import { ChakraProvider } from '@chakra-ui/react'
+import { RideDataContext } from "../contexts/RideDataContext";
+
 function MainPage() {
+    const [directionsResponse, setDirectionsResponse] = useState(null)
+
     return (
         <div className={classes.grid}>
             <ChakraProvider>
-                <SideBar/>
-                <MapLoader className="mapContainer"/>
+                <RideDataContext.Provider value={{directionsResponse, setDirectionsResponse}}>
+                    <SideBar/>
+                    <MapLoader className="mapContainer"/>
+                </RideDataContext.Provider>
             </ChakraProvider>
             
            
