@@ -22,7 +22,8 @@ import {
 import { useRef, useState } from 'react'
 
 const center = { lat: 38.957111, lng: -95.254387 }
-const mykey=process.env.REACT_APP_MY_SECRET_KEY;
+// const mykey=process.env.REACT_APP_MY_SECRET_KEY;
+const mykey = 'AIzaSyCYK8x8EyxKxEba0QftXmrSvC4TsDzlJg0';
 console.log(mykey);
 function MapLoader() {
   const { isLoaded } = useJsApiLoader({
@@ -44,10 +45,52 @@ function MapLoader() {
     return <SkeletonText />
   }
 
+  // API SIMULATION FUNCTION HERE
+  async function getRideData(){
+    // let start_coordinates = [originRef.current.value];
+    // let end_coordinates = [destiantionRef.current.value];
+    let response = await fetch('http://localhost:1337/uber/v1.2/estimates/price?start_latitude=38.95008406477576&start_longitude=-95.23592305902609&end_latitude=38.956976561477894&end_longitude=-95.27903033200737');
+    let result = await response.json();
+    let returnArr = [];
+    for(var i=0; i<result.length; i++){
+      returnArr[i] = new Object();
+      returnArr[i].company_logo = 'https://clipground.com/images/logo-uber-png-2.png';
+      returnArr[i].car_icon = result[i].image;
+      returnArr[i].company = 'uber';
+      returnArr[i].eta = result[i].eta;
+      returnArr[i].ride_time = Math.floor(result[i].duration / 60);
+      returnArr[i].cost = parseFloat(result[i].high_estimate);
+      // console.log(returnArr[i].cost);
+      returnArr[i].vehicle = result[i].display_name;
+      returnArr[i].rating = result[i].rating;
+      returnArr[i].driver_name = "John Smith";
+    }
+    
+    let response2 = await fetch('http://localhost:1337/lyft/rides?start_latitude=38.95008406477576&start_longitude=-95.23592305902609&end_latitude=38.956976561477894&end_longitude=-95.27903033200737');
+    let result2 = await response2.json();
+    for(var i=0; i<result2.length; i++){
+      let temp = new Object();
+      temp.company_logo = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Lyft_logo.svg/1200px-Lyft_logo.svg.png';
+      temp.car_icon = result2[i].image;
+      temp.company = 'lyft';
+      temp.eta = result2[i].eta;
+      temp.ride_time = Math.floor(result2[i].ride_time / 60);
+      temp.cost = parseFloat(result2[i].cost);
+      temp.vehicle = result2[i].vehicle;
+      temp.rating = result2[i].rating;
+      temp.driver_name = "Lyft Driver";
+      returnArr.push(temp);
+    }
+    
+    return(returnArr);
+  }
+
+
   async function calculateRoute() {
     if (originRef.current.value === '' || destiantionRef.current.value === '') {
       return
     }
+
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService()
     const results = await directionsService.route({
@@ -57,8 +100,26 @@ function MapLoader() {
       travelMode: google.maps.TravelMode.DRIVING,
     })
 
-    // call api simulation here and export data
-    
+    // CALL API SIMULATION HERE AND ??EXPORT DATA??
+    getRideData().then(function(result){
+
+			fetch("http://localhost:1337/writedriverdata",
+      {
+        method: "POST",
+        body: JSON.stringify(result),
+        type: 'application/json'
+      })
+      .then((result) => {
+        // console.log(result);
+        console.log("post sent")
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      
+		});
+
+
     setDirectionsResponse(results)
     setDistance(results.routes[0].legs[0].distance.text)
     setDuration(results.routes[0].legs[0].duration.text)

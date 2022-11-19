@@ -2,8 +2,13 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
+const { queries } = require('@testing-library/react');
 const port = 1337;
 const hostname = '127.0.0.1';
+const qs = require('querystring');
+const { type } = require('os');
+
+let postedRideData = [];
 
 class UberProduct {
 	constructor(productType){
@@ -219,7 +224,6 @@ const server = http.createServer((request,response)=>{
 					var productNumber = Math.floor(Math.random() * 4);
 					prices[i] = new UberEstimate(products[productNumber],distance);
 					
-					
 				}
 				
 				response.write(JSON.stringify(prices));
@@ -259,12 +263,54 @@ const server = http.createServer((request,response)=>{
 				response.write(JSON.stringify(prices));
 				response.end();
 			}
-		}		
-		
-		
-		
-		response.statusCode = 404;
-		response.end();
+		}
+
+		if(current_url.pathname === '/getdriverdata'){
+			response.statusCode = 200;
+			response.setHeader('Content-Type','application/json');
+			response.setHeader('Access-Control-Allow-Origin','*');
+			response.write(JSON.stringify(postedRideData));
+			response.end();
+		}
+
+	} else if(request.method === "POST") {
+		if (request.url === "/writedriverdata") {
+		  var requestBody = '';
+		  request.on('data', function(data) {
+			requestBody += data;
+			if(requestBody.length > 1e7) {
+			  response.writeHead(413, 'Request Entity Too Large', {'Content-Type': 'text/html'});
+			  response.end('<!doctype html><html><head><title>413</title></head><body>413: Request Entity Too Large</body></html>');
+			}
+		  });
+		  request.on('end', function() {
+			var formData = requestBody;
+			// console.log(true);
+			// // console.log(formData);
+			// console.log(typeof formData);
+
+			postedRideData = JSON.parse(formData);
+			console.log("post stored");
+	
+			// fs.writeFile("data.txt", formData, (err) => {
+			// 	if (err) throw err;
+			// 	console.log("done writing....");
+			//   });
+
+			// console.log(postedRideData);
+			
+			response.writeHead(200, {'Content-Type': 'text/html'});
+			response.write('<!doctype html><html><head><title>response</title></head><body>');
+			response.write('Thanks for the data!<br />User Name: '+formData.UserName);
+			response.write('<br />Repository Name: '+formData.Repository);
+			response.write('<br />Branch: '+formData.Branch);
+			response.end('</body></html>');
+		  });
+		} else {
+		  response.writeHead(404, 'Resource Not Found', {'Content-Type': 'text/html'});
+		  response.end('<!doctype html><html><head><title>404</title></head><body>404: Resource Not Found</body></html>');
+		}
+
 	}else{
 		response.statusCode = 405;
 		
@@ -273,6 +319,5 @@ const server = http.createServer((request,response)=>{
 
 server.listen(port,hostname, ()=>{
 	console.log(`Server running at http://${hostname}:${port}/`);
-	
 	
 });
