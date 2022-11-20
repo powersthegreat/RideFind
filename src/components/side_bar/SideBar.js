@@ -8,13 +8,56 @@ import DriverItem from './DriverItem';
 import classes from './SideBar.module.css';
 
 function SideBar() {
+    const mykey = 'AIzaSyCYK8x8EyxKxEba0QftXmrSvC4TsDzlJg0';
     const { directionsResponse } = useContext(RideDataContext);
+    const [userLocation, setUserLocation] = useState(()=>{
+      return ""
+    });
     const [rideData, setRideData] = useState([]);
     const [data, setData] = useState([]);
     const [sortType, setSortType] = useState('cost');
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const inputEl = useRef("");
+
+    async function userLocationDisplay() {
+      async function successCallback(position) {
+        let locationLat = position.coords.latitude;
+        let locationLng = position.coords.longitude;
+        if (locationLat !== null || locationLat !== ""){
+          let locaitonFetch = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${locationLat},${locationLng}&key=${mykey}`);
+          let result = await locaitonFetch.json();
+          let convertedLocation = result.results[0].formatted_address;
+          setUserLocation(convertedLocation);
+        }
+      }
+
+      async function errorCallback(error) {
+        console.log("could not get users location")
+      }
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    };
+
+    userLocationDisplay();
+
+    // const successCallback = (position) => {
+    //   let locationLat = position.coords.latitude;
+    //   let locationLong = position.coords.longitude;
+    //   if (locationLat !== null || locationLat !== ""){
+    //     fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=${mykey}`)
+    //     .then((response) => {
+    //       console.log("got location")
+    //     }).then((result) => {
+    //       console.log(result)
+    //     }).catch((error) => {
+    //       console.log("Error occured while converting user location.")
+    //     })
+    //   }
+    // };
+    // const errorCallback = (error) => {
+    //   console.log("could not get users location")
+    // };
+    // navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
     async function renderRideData(){
       let response = await fetch('http://localhost:1337/getdriverdata');
@@ -70,7 +113,7 @@ function SideBar() {
             <div className={classes.filtersortbarmain}>
                 <div className={classes.leftdiv}>
                     <h3 className={classes.title}>Rides in Area</h3>
-                    <p className={classes.location}>Current location:</p>
+                    <p className={classes.location}>{userLocation}</p>
                 </div>
                 <div className={classes.rightdiv}>
                     <div className={classes.buttonsdiv}>
