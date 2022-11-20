@@ -36,8 +36,9 @@ function MapLoader() {
   const [map, setMap] = useState(/** @type google.maps.Map */ (null))
   // const [directionsResponse, setDirectionsResponse] = useState(null)
   const {directionsResponse, setDirectionsResponse} = useContext(RideDataContext);
-  const [distance, setDistance] = useState('')
-  const [duration, setDuration] = useState('')
+  const [coordinates, setCoordinates] = useState([[38.95008406477576, -95.23592305902609], [38.956976561477894, -95.27903033200737]]);
+  const [distance, setDistance] = useState('');
+  const [duration, setDuration] = useState('');
 
   /** @type React.MutableRefObject<HTMLInputElement> */
   const originRef = useRef()
@@ -52,7 +53,7 @@ function MapLoader() {
   async function getRideData(){
     // let start_coordinates = [originRef.current.value];
     // let end_coordinates = [destinationRef.current.value];
-    let response = await fetch('http://localhost:1337/uber/v1.2/estimates/price?start_latitude=38.95008406477576&start_longitude=-95.23592305902609&end_latitude=38.956976561477894&end_longitude=-95.27903033200737');
+    let response = await fetch(`http://localhost:1337/uber/v1.2/estimates/price?start_latitude=${coordinates[0][0]}&start_longitude=${coordinates[0][1]}&end_latitude=${coordinates[1][0]}&end_longitude=${coordinates[1][1]}`);
     let result = await response.json();
     let returnArr = [];
     for(var i=0; i<result.length; i++){
@@ -69,7 +70,7 @@ function MapLoader() {
       returnArr[i].driver_name = "John Smith";
     }
     
-    let response2 = await fetch('http://localhost:1337/lyft/rides?start_latitude=38.95008406477576&start_longitude=-95.23592305902609&end_latitude=38.956976561477894&end_longitude=-95.27903033200737');
+    let response2 = await fetch(`http://localhost:1337/lyft/rides?start_latitude=${coordinates[0][0]}&start_longitude=${coordinates[0][1]}9&end_latitude=${coordinates[1][0]}&end_longitude=${coordinates[1][1]}`);
     let result2 = await response2.json();
     for(var j=0; j<result2.length; j++){
       let temp = {};
@@ -94,10 +95,19 @@ function MapLoader() {
       return
     }
 
-    const test = "1111+Indiana+Street,+Lawrence,+KS,+USA";
-    let originFetch = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${test}&key=${mykey}`)
-    let originCoor = await originFetch.json()[0];
-    console.log(originCoor);
+    console.log(coordinates);
+    // getting user entered addresses and converting to lat long for api calls
+    // origin
+    let originFetch = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${originRef.current.value}&key=${mykey}`);
+    let originResult = await originFetch.json();
+    let originLatLng = originResult.results[0].geometry.location;
+    // destination
+    let destinationFetch = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${destinationRef.current.value}&key=${mykey}`);
+    let destinationResult = await destinationFetch.json();
+    let destinationLatLng = destinationResult.results[0].geometry.location;
+    setCoordinates([[originLatLng.lat, originLatLng.lng],[destinationLatLng.lat, destinationLatLng.lng]]);
+    console.log([[originLatLng.lat, originLatLng.lng],[destinationLatLng.lat, destinationLatLng.lng]]);
+    // console.log(coordinates);
 
     // eslint-disable-next-line no-undef
     const directionsService = new google.maps.DirectionsService()
