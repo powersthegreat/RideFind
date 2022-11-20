@@ -23,11 +23,16 @@ import {
 import { useRef, useState, useContext } from 'react';
 import { RideDataContext } from '../../contexts/RideDataContext';
 
-const center = { lat: 38.957111, lng: -95.254387 }
+const center = { lat: 38.957111, lng: -95.254387 };
+// the following would place the center at the users locaiton but throwing error
+// const [center, setCenter] = useState[{ lat: 38.957111, lng: -95.254387 }];
+
 // const mykey=process.env.REACT_APP_MY_SECRET_KEY;
 const mykey = 'AIzaSyCYK8x8EyxKxEba0QftXmrSvC4TsDzlJg0';
 // console.log(mykey);
 function MapLoader() {
+  
+
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: mykey,
   libraries: ['places'],
