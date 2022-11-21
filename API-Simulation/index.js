@@ -124,13 +124,27 @@ class UberEstimate{
     
 class LyftEstimate{
 	constructor(dist){
-		this.image = 'https://findicons.com/files/icons/766/base_software/256/user1.png';
+		var randomIndex = Math.floor(Math.random()* 3);
+		
 		this.ride_time = (dist / (0.75 + (Math.random()*0.50 - 0.25)) * 60);
-		this.cost = (dist * 3.50 + 2.75).toFixed(2);
 		this.eta = Math.floor(Math.random()*3 + 2);
-		this.image = "http:\/\/d1a3f4spazzrp4.cloudfront.net\/car-types\/mono\/mono-uberx.png";
 		this.rating = Math.ceil(5-(Math.random()*4));
-		this.vehicle = "Lyft";
+		
+		if(randomIndex == 0){
+			this.cost = (dist * 2.50 + 2.75).toFixed(2);
+			this.vehicle = "Rideshare";
+			this.image = "http:\/\/d1a3f4spazzrp4.cloudfront.net\/car-types\/mono\/mono-uberx.png";
+		}
+		if(randomIndex == 1){
+			this.cost = (dist * 3.50 + 2.75).toFixed(2);
+			this.vehicle = "Taxi";
+			this.image = "http:\/\/d1a3f4spazzrp4.cloudfront.net\/car-types\/mono\/mono-taxi.png";
+		}
+		if(randomIndex == 2){
+			this.cost = (dist * 6.00 + 2.75).toFixed(2);
+			this.vehicle = "Luxury";
+			this.image = "http:\/\/d1a3f4spazzrp4.cloudfront.net\/car-types\/mono\/mono-black.png";
+		}
 	}
 }
 
