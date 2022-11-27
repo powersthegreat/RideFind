@@ -8,7 +8,7 @@ import DriverItem from './DriverItem';
 import classes from './SideBar.module.css';
 
 function SideBar() {
-    const mykey = 'AIzaSyCYK8x8EyxKxEba0QftXmrSvC4TsDzlJg0';
+    const mykey = 'AIzaSyCSPa7qb6AM4fWS6h0rhK_Vgk8E6uh1uAQ';
     const { directionsResponse } = useContext(RideDataContext);
     const [userLocation, setUserLocation] = useState(()=>{
       return ""
@@ -40,25 +40,6 @@ function SideBar() {
 
     userLocationDisplay();
 
-    // const successCallback = (position) => {
-    //   let locationLat = position.coords.latitude;
-    //   let locationLong = position.coords.longitude;
-    //   if (locationLat !== null || locationLat !== ""){
-    //     fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=${mykey}`)
-    //     .then((response) => {
-    //       console.log("got location")
-    //     }).then((result) => {
-    //       console.log(result)
-    //     }).catch((error) => {
-    //       console.log("Error occured while converting user location.")
-    //     })
-    //   }
-    // };
-    // const errorCallback = (error) => {
-    //   console.log("could not get users location")
-    // };
-    // navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-
     async function renderRideData(){
       let response = await fetch('http://localhost:1337/getdriverdata');
       let result = await response.json();
@@ -79,7 +60,7 @@ function SideBar() {
       setSearchTerm(searchTerm);
       if (searchTerm !== "") {
         const filtered = rideData.filter((item) => {
-          return (Object.values(item)[1] + " " + Object.values(item)[5] + " " + Object.values(item)[6]).toLowerCase().includes(searchTerm.toLowerCase());
+          return (Object.values(item)[2] + " " + Object.values(item)[6] + " " + Object.values(item)[7]).toLowerCase().includes(searchTerm.toLowerCase());
         });
         setSearchResults(filtered);
       } else {
