@@ -20,19 +20,17 @@ import {
   DirectionsRenderer,
 } from '@react-google-maps/api'
 
-import { useRef, useState, useContext } from 'react';
+import { useRef, useState, useContext, useEffect } from 'react';
 import { RideDataContext } from '../../contexts/RideDataContext';
 
-const center = { lat: 38.957111, lng: -95.254387 };
-// the following would place the center at the users locaiton but throwing error
-// const [center, setCenter] = useState[{ lat: 38.957111, lng: -95.254387 }];
+// let center = { lat: 38.957111, lng: -95.254387 };
 
 // const mykey=process.env.REACT_APP_MY_SECRET_KEY;
 const mykey = 'AIzaSyCSPa7qb6AM4fWS6h0rhK_Vgk8E6uh1uAQ';
 // console.log(mykey);
 function MapLoader() {
+  const [center, setCenter] = useState(() => {return { lat: 38.957111, lng: -95.254387 }});
   
-
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: mykey,
   libraries: ['places'],
@@ -49,6 +47,25 @@ function MapLoader() {
   const originRef = useRef()
   /** @type React.MutableRefObject<HTMLInputElement> */
   const destinationRef = useRef()
+
+  useEffect(() => {
+    async function userLocationDisplay() {
+      async function successCallback(position) {
+        let locationLat = position.coords.latitude;
+        let locationLng = position.coords.longitude;
+        if (locationLat !== null || locationLat !== ""){
+          setCenter({ lat: locationLat, lng: locationLng});
+        }
+      }
+  
+      async function errorCallback(error) {
+        console.log("could not get users location")
+      }
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    };
+  
+    userLocationDisplay();
+  }, [map])
 
   if (!isLoaded) {
     return <SkeletonText />
