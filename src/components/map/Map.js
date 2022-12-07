@@ -26,8 +26,9 @@ import { RideDataContext } from '../../contexts/RideDataContext';
 // let center = { lat: 38.957111, lng: -95.254387 };
 
 // const mykey=process.env.REACT_APP_MY_SECRET_KEY;
-const mykey = 'AIzaSyCSPa7qb6AM4fWS6h0rhK_Vgk8E6uh1uAQ';
-// console.log(mykey);
+const mykey = process.env.REACT_APP_API_KEY;
+
+console.log(mykey);
 function MapLoader() {
   const [center, setCenter] = useState(() => {return { lat: 38.957111, lng: -95.254387 }});
   
